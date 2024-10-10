@@ -1,9 +1,15 @@
 using Microsoft.EntityFrameworkCore;
+using MyAcademyChainOfResponsibility.ChainOfResponsibility;
 using MyAcademyChainOfResponsibility.DataAccess.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<Clerk>();
+builder.Services.AddScoped<AssistantManager>();
+builder.Services.AddScoped<Manager>();
+builder.Services.AddScoped<RegionalManager>();
+
 builder.Services.AddDbContext<CoFContext>(options=>
 {
 	options.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection"));

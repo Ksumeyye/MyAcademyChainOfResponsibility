@@ -1,0 +1,15 @@
+﻿@model CustomerProcessViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>Para Çekme İşlemi</h3>
+<form method="post">
+    <label>Müşteri Ad Soyad</label>
+    <input type="text" asp-for="Name" class="form-control"/>
+    <br/>
+    <label>Çekilecek Tutar</label>
+    <input type="text" asp-for="Price" class="form-control"/>
+
+    <button class="btn btn-primary">Parayı Çek</button>
+</form>
