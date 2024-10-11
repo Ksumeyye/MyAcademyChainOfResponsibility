@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyAcademyChainOfResponsibility.DataAccess.Context;
 
@@ -10,9 +11,10 @@ using MyAcademyChainOfResponsibility.DataAccess.Context;
 namespace MyAcademyChainOfResponsibility.Migrations
 {
     [DbContext(typeof(CoFContext))]
-    partial class CoFContextModelSnapshot : ModelSnapshot
+    [Migration("20241011160632_mig_service_table_added")]
+    partial class mig_service_table_added
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -106,10 +108,6 @@ namespace MyAcademyChainOfResponsibility.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ServiceId"), 1L, 1);
-
-                    b.Property<string>("ResimUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ServiceName")
                         .IsRequired()

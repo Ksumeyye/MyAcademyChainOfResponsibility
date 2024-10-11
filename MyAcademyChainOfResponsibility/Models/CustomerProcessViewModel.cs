@@ -1,4 +1,6 @@
-﻿namespace MyAcademyChainOfResponsibility.Models
+﻿using MyAcademyChainOfResponsibility.DataAccess.Entities;
+
+namespace MyAcademyChainOfResponsibility.Models
 {
 	public class CustomerProcessViewModel
 	{
@@ -6,5 +8,6 @@
 		public int Price { get; set; }
 		public string EmployeeName { get; set; }
 		public string Description { get; set; }
+		
 	}
 }

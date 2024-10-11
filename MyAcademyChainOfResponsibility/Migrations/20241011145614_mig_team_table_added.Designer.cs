@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyAcademyChainOfResponsibility.DataAccess.Context;
 
@@ -10,9 +11,10 @@ using MyAcademyChainOfResponsibility.DataAccess.Context;
 namespace MyAcademyChainOfResponsibility.Migrations
 {
     [DbContext(typeof(CoFContext))]
-    partial class CoFContextModelSnapshot : ModelSnapshot
+    [Migration("20241011145614_mig_team_table_added")]
+    partial class mig_team_table_added
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,23 +22,6 @@ namespace MyAcademyChainOfResponsibility.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("MyAcademyChainOfResponsibility.DataAccess.Entities.Banner", b =>
-                {
-                    b.Property<int>("BannerId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BannerId"), 1L, 1);
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("BannerId");
-
-                    b.ToTable("Banners");
-                });
 
             modelBuilder.Entity("MyAcademyChainOfResponsibility.DataAccess.Entities.Contact", b =>
                 {
@@ -99,27 +84,6 @@ namespace MyAcademyChainOfResponsibility.Migrations
                     b.ToTable("CustomerProcesses");
                 });
 
-            modelBuilder.Entity("MyAcademyChainOfResponsibility.DataAccess.Entities.Service", b =>
-                {
-                    b.Property<int>("ServiceId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ServiceId"), 1L, 1);
-
-                    b.Property<string>("ResimUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ServiceName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ServiceId");
-
-                    b.ToTable("Services");
-                });
-
             modelBuilder.Entity("MyAcademyChainOfResponsibility.DataAccess.Entities.Team", b =>
                 {
                     b.Property<int>("TeamId")
@@ -128,7 +92,7 @@ namespace MyAcademyChainOfResponsibility.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TeamId"), 1L, 1);
 
-                    b.Property<int>("CustomerProcessId")
+                    b.Property<int>("CustomerProcessesCustomerProcessId")
                         .HasColumnType("int");
 
                     b.Property<string>("Job")
@@ -137,20 +101,20 @@ namespace MyAcademyChainOfResponsibility.Migrations
 
                     b.HasKey("TeamId");
 
-                    b.HasIndex("CustomerProcessId");
+                    b.HasIndex("CustomerProcessesCustomerProcessId");
 
                     b.ToTable("Teams");
                 });
 
             modelBuilder.Entity("MyAcademyChainOfResponsibility.DataAccess.Entities.Team", b =>
                 {
-                    b.HasOne("MyAcademyChainOfResponsibility.DataAccess.Entities.CustomerProcess", "CustomerProcess")
+                    b.HasOne("MyAcademyChainOfResponsibility.DataAccess.Entities.CustomerProcess", "CustomerProcesses")
                         .WithMany("Teams")
-                        .HasForeignKey("CustomerProcessId")
+                        .HasForeignKey("CustomerProcessesCustomerProcessId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("CustomerProcess");
+                    b.Navigation("CustomerProcesses");
                 });
 
             modelBuilder.Entity("MyAcademyChainOfResponsibility.DataAccess.Entities.CustomerProcess", b =>
