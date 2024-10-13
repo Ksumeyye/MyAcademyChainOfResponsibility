@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyAcademyChainOfResponsibility.DataAccess.Context;
 
@@ -10,9 +11,10 @@ using MyAcademyChainOfResponsibility.DataAccess.Context;
 namespace MyAcademyChainOfResponsibility.Migrations
 {
     [DbContext(typeof(CoFContext))]
-    partial class CoFContextModelSnapshot : ModelSnapshot
+    [Migration("20241013181610_DeleteContactsTable")]
+    partial class DeleteContactsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,6 +49,44 @@ namespace MyAcademyChainOfResponsibility.Migrations
                     b.HasKey("CustomerProcessId");
 
                     b.ToTable("CustomerProcesses");
+                });
+
+            modelBuilder.Entity("MyAcademyChainOfResponsibility.DataAccess.Entities.Team", b =>
+                {
+                    b.Property<int>("TeamId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TeamId"), 1L, 1);
+
+                    b.Property<int>("CustomerProcessId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Job")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TeamId");
+
+                    b.HasIndex("CustomerProcessId");
+
+                    b.ToTable("Team");
+                });
+
+            modelBuilder.Entity("MyAcademyChainOfResponsibility.DataAccess.Entities.Team", b =>
+                {
+                    b.HasOne("MyAcademyChainOfResponsibility.DataAccess.Entities.CustomerProcess", "CustomerProcess")
+                        .WithMany("Teams")
+                        .HasForeignKey("CustomerProcessId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CustomerProcess");
+                });
+
+            modelBuilder.Entity("MyAcademyChainOfResponsibility.DataAccess.Entities.CustomerProcess", b =>
+                {
+                    b.Navigation("Teams");
                 });
 #pragma warning restore 612, 618
         }

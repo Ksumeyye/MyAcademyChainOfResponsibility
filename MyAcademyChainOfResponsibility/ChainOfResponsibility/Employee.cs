@@ -1,5 +1,4 @@
-﻿using MyAcademyChainOfResponsibility.DataAccess.Entities;
-using MyAcademyChainOfResponsibility.Models;
+﻿using MyAcademyChainOfResponsibility.Models;
 
 namespace MyAcademyChainOfResponsibility.ChainOfResponsibility
 {

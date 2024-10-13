@@ -1,4 +1,5 @@
 ﻿using MyAcademyChainOfResponsibility.DataAccess.Context;
+using MyAcademyChainOfResponsibility.DataAccess.Entities;
 using MyAcademyChainOfResponsibility.Models;
 
 namespace MyAcademyChainOfResponsibility.ChainOfResponsibility
@@ -15,7 +16,7 @@ namespace MyAcademyChainOfResponsibility.ChainOfResponsibility
 		{
 			if (request.Price <= 250000)
 			{
-				var customerProcess = new CustomerProcessViewModel
+				var customerProcess = new CustomerProcess
 				{
 					Name = request.Name,
 					Price = request.Price,
@@ -27,7 +28,7 @@ namespace MyAcademyChainOfResponsibility.ChainOfResponsibility
 			}
 			else if (NextApprover != null) //Bir sonraki çalışan değeri null'dan farklıysa
 			{
-				var customerProcess = new CustomerProcessViewModel
+				var customerProcess = new CustomerProcess
 				{
 					Name = request.Name,
 					Price = request.Price,

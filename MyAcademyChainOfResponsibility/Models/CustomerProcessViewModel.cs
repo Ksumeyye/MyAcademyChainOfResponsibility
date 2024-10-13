@@ -1,6 +1,4 @@
-﻿using MyAcademyChainOfResponsibility.DataAccess.Entities;
-
-namespace MyAcademyChainOfResponsibility.Models
+﻿namespace MyAcademyChainOfResponsibility.Models
 {
 	public class CustomerProcessViewModel
 	{

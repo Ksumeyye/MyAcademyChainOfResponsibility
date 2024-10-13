@@ -15,7 +15,7 @@ namespace MyAcademyChainOfResponsibility.ChainOfResponsibility
 			{
 				if (request.Price <= 500000)
 				{
-					var customerProcess = new CustomerProcessViewModel
+					var customerProcess = new CustomerProcess
 					{
 						Name = request.Name,
 						Price = request.Price,

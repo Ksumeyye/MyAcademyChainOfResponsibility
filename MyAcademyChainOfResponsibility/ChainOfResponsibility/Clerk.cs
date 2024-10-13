@@ -1,12 +1,13 @@
 ﻿using MyAcademyChainOfResponsibility.DataAccess.Context;
+using MyAcademyChainOfResponsibility.DataAccess.Entities;
 using MyAcademyChainOfResponsibility.Models;
 
 namespace MyAcademyChainOfResponsibility.ChainOfResponsibility
 {
-	public class Clerk: Employee
+	public class Clerk : Employee
 	{
 		private readonly CoFContext _context;
-	
+
 		public Clerk(CoFContext context)
 		{
 			_context = context;
@@ -15,7 +16,7 @@ namespace MyAcademyChainOfResponsibility.ChainOfResponsibility
 		{
 			if (request.Price <= 50000)
 			{
-				var customerProcess = new CustomerProcessViewModel
+				var customerProcess = new CustomerProcess
 				{
 					Name = request.Name,
 					Price = request.Price,
@@ -27,7 +28,7 @@ namespace MyAcademyChainOfResponsibility.ChainOfResponsibility
 			}
 			else if(NextApprover!=null)
 			{
-				var customerProcess = new CustomerProcessViewModel
+				var customerProcess = new CustomerProcess
 				{
 					Name = request.Name,
 					Price = request.Price,
