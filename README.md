@@ -1,6 +1,6 @@
 # My Academy Chain Of Responsibility Project <br/>
 
-Chain of Responsibility design pattern kullanarak yaptığım tek katmanlı küçük atm projesidir. Müşteri bankadan para çekmek istediğinde kullanılır. Paranın limitine göre müşteri bankanın departmanlarına iletilir.. <br/>
+Chain of Responsibility design pattern kullanarak yaptığım tek katmanlı küçük atm projesidir. Müşteri bankadan para çekmek istediğinde kullanılır. Paranın limitine göre müşteri bankanın departmanlarına iletilir. <br/>
 
 ![ParaCekme1](https://github.com/user-attachments/assets/117090be-92bb-4f09-8e1e-c2a1c745fcbe) <br/>
 
